@@ -26,14 +26,13 @@ app.use(helmet());
 app.use(express.json());
 const server= http.createServer(app); 
 
-
 app.get('/health', (req, res) =>{
     res.json({status: 'ok'});
 });
 
 app.post('/', upload.single('image'), (req, res) =>{
     if(!req.file) return res.send({success: false});
-    else return res.send({success: true, fileName: req.file.filename });
+    else return res.json({success: true, fileName: req.file.filename });
 });
 
 app.get('/image/:name', (req, res) =>{
@@ -47,3 +46,5 @@ app.use((req, res) =>{
 server.listen(PORT, () =>{
     console.log(`Server is running on port ${PORT}`);
 });
+
+export default app;
