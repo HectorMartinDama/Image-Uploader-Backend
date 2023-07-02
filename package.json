@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "test": "jest",
+    "test": "jest --verbose test/",
     "test:watch": "npm run test -- --watch"
   },
   "keywords": [],
