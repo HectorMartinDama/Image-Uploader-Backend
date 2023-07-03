@@ -7,8 +7,9 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "test": "jest --verbose test/",
-    "test:watch": "npm run test -- --watch"
+    "test": "vitest",
+    "eslint": "eslint .",
+    "eslint:fix": "eslint . --fix"
   },
   "keywords": [],
   "author": "",
@@ -22,8 +23,13 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "jest": "^29.5.0",
+    "eslint": "^8.44.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^16.0.1",
+    "eslint-plugin-promise": "^6.1.1",
     "nodemon": "^2.0.22",
-    "supertest": "^6.3.3"
+    "supertest": "^6.3.3",
+    "vitest": "^0.32.2"
   }
 }
