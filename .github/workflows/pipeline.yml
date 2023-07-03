@@ -10,16 +10,29 @@ on:
 
 
     
-jobs:
-    
-    test:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-node@v3
-              with:
-                node-version: 16
-            - name: Install dependencies
-              run: npm ci
-            - name: Pass the test
-              run: npm run test
+jobs:    
+
+  lint:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: npm ci
+      - name: Pass the linter
+        run: npm run eslint
+
+  test:
+    needs: [lint]
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: npm ci
+      - name: Pass the test
+        run: npm run test
